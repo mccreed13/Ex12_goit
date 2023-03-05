@@ -1,16 +1,17 @@
-import java.sql.Time;
+
 import java.time.LocalTime;
 
 public class FiveSecondsPassed {
     public static void timer() {
         Thread thread = new Thread(() -> {
+            long time = System.currentTimeMillis();
             while (true) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println(LocalTime.now());
+                System.out.println((System.currentTimeMillis()-time)/1000 + " секунд");
             }
         });
         Thread thread2 = new Thread(() -> {
